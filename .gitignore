@@ -106,4 +106,4 @@ media/
 *.pyc
 *.db
 *.pid
-.idea/workspace.xml
+.idea/**
