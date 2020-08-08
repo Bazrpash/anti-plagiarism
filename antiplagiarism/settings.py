@@ -119,3 +119,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Email configurations
+EMAIL_HOST_PASSWORD = 'Iran_bazrpash1399'
+EMAIL_HOST_USER = 'contact@iran-antiplagiarism.com'
+DEFAULT_FROM_EMAIL = 'contact@iran-antiplagiarism.com'
+EMAIL_HOST = 'smtp.dreamhost.com'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+CELERY_EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
+
+# EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
+# CELERY_EMAIL_TASK_CONFIG = {
+#     'max_retries': 30,
+#     'queue': 'mail_queue',
+#     'ignore_result': True,
+# }

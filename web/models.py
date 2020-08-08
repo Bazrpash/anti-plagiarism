@@ -8,7 +8,6 @@ class Account(models.Model):
     email = models.EmailField(unique=True, null=False, blank=False)
     first_and_last_name = models.CharField(max_length=100, blank=False, null=False)
 
-    student_no = models.CharField(max_length=10, blank=True, null=True)
     uni_major = models.CharField(max_length=50, blank=True, null=True)
     uni_name = models.CharField(max_length=50, blank=False, null=False)
 
@@ -43,5 +42,5 @@ class Account(models.Model):
 class AccountForm(ModelForm):
     class Meta:
         model = Account
-        fields = ['email', 'first_and_last_name', 'student_no', 'uni_major', 'uni_name',
+        fields = ['email', 'first_and_last_name', 'uni_major', 'uni_name',
                   'uni_position', 'is_visible', 'is_graduated', 'is_professor']

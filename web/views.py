@@ -1,5 +1,6 @@
 from django.shortcuts import render
-# from django.template import loader
+from django.template import loader
+from django.core.mail import send_mail
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from .models import Account, AccountForm
@@ -31,6 +32,8 @@ def submit(request):
     if obj:
         if 'uni_position' in raw_data:
             obj.is_professor = True
+        else:
+            obj.is_professor = False
         if 'is_visible' in raw_data:
             if int(raw_data['is_visible']) > 0:
                 obj.is_visible = True
@@ -41,13 +44,8 @@ def submit(request):
                 obj.is_graduated = True
             else:
                 obj.is_graduated = False
-        if 'student_no' in raw_data:
-            obj.is_professor = False
         obj.save()
-
-        # TODO email validation link to user
-        # validation_link = 'www.iran-antiplagiarism.com/validate/' + str(obj.id)
-        # print(validation_link)
+        sending_email(obj.email, obj.id)
 
         return HttpResponseRedirect(reverse('web:index', kwargs={'status': 1}))
     else:
@@ -64,3 +62,19 @@ def validate(request, user_id):
     user_account.is_verified = True
     user_account.save()
     return HttpResponseRedirect(reverse('web:index', kwargs={'status': 2}))
+
+
+def sending_email(recipient, validation_code):
+    validation_link = 'www.iran-antiplagiarism.com/validate/' + str(validation_code)
+    html_message = loader.render_to_string('web/email.html', {
+        'validation_link': validation_link
+    })
+
+    send_mail(
+        subject='تایید عضویت',
+        message='لطفا عضویت خود را تایید نمایید.',
+        html_message=html_message,
+        recipient_list=[recipient],
+        from_email='contact@iran-antiplagiarism.com',
+        fail_silently=True
+    )
