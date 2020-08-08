@@ -42,7 +42,7 @@
         <div class="container">
             <!-- nav -->
             <nav class="py-3 d-lg-flex">
-                <div id="logo">
+                <div id="logo" style="display: none">
                     <h1> <a href="/">مهرداد بذرپاش</a></h1>
                 </div>
                 <label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
@@ -68,15 +68,17 @@
                                 <li>
                                     <div class="container-fluid">
                                         <div class="w3ls_banner_txt rtl">
-                                            <h3 class="b-w3ltxt text-capitalize mt-md-4">سرقت علمی</h3>
-                                            <h4 class="b-w3ltxt text-capitalize mt-md-2">راهی برای تضمین جایگاه</h4>
+                                            <h3 class="b-w3ltxt text-capitalize mt-md-4">#ابطال_مدرک_بذرپاش</h3>
+                                            <h4 class="b-w3ltxt text-capitalize mt-md-2">کمپین دانشگاهیان برای مقابله با سرقت علمی</h4>
                                             <p class="w3ls_pvt-title my-3">
-                                                جایگاه مشخصه، این فقط پایداری رو تضمین میکنه :)
+                                                مدرک آقای بذرپاش را ابطال کنید
                                             </p>
                                             <div class="d-flex align-items-center">
                                                 <p>تا کنون</p>
-                                                <a class="btn btn-banner text-white mx-2">{{ joined_number }}</a>
-                                                <p>نفر عضو شده اند</p>
+                                                <a class="btn btn-banner text-white mx-1">{{ joined_number }}</a>
+                                                <p> دانشجو و </p>
+                                                <a class="btn btn-banner text-white mx-1">{{ joined_number }}</a>
+                                                <p> استاد به این کمپین پیوسته اند</p>
                                             </div>
                                         </div>
                                     </div>
@@ -111,18 +113,17 @@
                                         <!-- banner form -->
                                         <form action="{% url 'web:submit' %}" method="post" class="rtl">
                                             {% csrf_token %}
-                                            <h5 class="mb-3">کمپین مبارزه با سرقت علمی</h5>
+                                            <h5 class="mb-3">به کمپین #ابطال_مدرک_بذرپاش بپیوندید</h5>
                                             <div class="form-style-w3ls">
                                                 <input placeholder="نام و نام خانوادگی" name="first_and_last_name" type="text" required>
                                                 <input placeholder="رشته" name="uni_major" type="text" required>
                                                 <input placeholder="دانشگاه" name="uni_name" type="text" required>
-                                                <input placeholder="شماره دانشجویی" name="student_no" type="text" required>
-                                                <strong>
-                                                    ایمیل تنها برای تایید اولیه هویت خواهد بود:
-                                                </strong>
+                                                <p>
+                                                    از ایمیل برای اعتبارسنجی امضاکننده استفاده خواهد شد:
+                                                </p>
                                                 <input placeholder="ایمیل" name="email" type="text" required>
                                                 <strong>
-                                                    آیا فارغ التحصیل می‌باشید؟
+                                                    آیا فارغ التحصیل شده اید؟
                                                 </strong>
                                                 <select name="is_graduated" required>
 									                <option value="0">خیر</option>
@@ -163,7 +164,7 @@
                                         <!-- banner form -->
                                         <form action="{% url 'web:submit' %}" method="post" class="rtl">
                                             {% csrf_token %}
-                                            <h5 class="mb-3">کمپین مبارزه با سرقت علمی</h5>
+                                            <h5 class="mb-3">به کمپین #ابطال_مدرک_بذرپاش بپیوندید</h5>
                                             <div class="form-style-w3ls">
                                                 <input placeholder="نام و نام خانوادگی" name="first_and_last_name" type="text" required>
                                                 <input placeholder="دانشگاه" name="uni_name" type="text" required>
@@ -172,9 +173,9 @@
 									                <option value="researcher">پژوهشگر</option>
                                                     <option value="OTHER_POS">سایر</option>
 									            </select>
-                                                <strong>
-                                                    ایمیل تنها برای تایید اولیه هویت خواهد بود:
-                                                </strong>
+                                                <p>
+                                                    از ایمیل برای اعتبارسنجی امضاکننده استفاده خواهد شد:
+                                                </p>
                                                 <input placeholder="ایمیل" name="email" type="email" required>
                                                 <strong>
                                                     در صورت رسانه‌ای شدن این نامه، مایل هستم که نام بنده هم به عنوان امضا کننده‌ی آن اعلام شود؟
