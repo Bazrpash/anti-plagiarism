@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '##v5e*y31(n)$jz4+#7&0uef$^j3q$7l_)2#*))yhsguk8p(dg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.iran-antiplagiarism.com']
 
 
 # Application definition
@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'antiplagiarism.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'antiplagiarism_djangodb',
+        'USER': 'antiplagiariser',
+        'PASSWORD': 'mmnpa7307354',
+        'HOST': 'mysql.iran-antiplagiarism.com',
+        'PORT': 3306
     }
 }
 
@@ -119,6 +123,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_ROOT = os.path.join('/home/amirhosseinz/', 'static/')
 
 # Email configurations
 EMAIL_HOST_PASSWORD = 'Iran_bazrpash1399'
