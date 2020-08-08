@@ -1,23 +1,17 @@
+import uuid
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser
+from django.forms import ModelForm
 
 
-class Account(AbstractBaseUser):
-    email = models.EmailField(unique=True, null=True, blank=True)
-    first_and_last_name = models.CharField(max_length=100, blank=True, null=True)
+class Account(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    email = models.EmailField(unique=True, null=False, blank=False)
+    first_and_last_name = models.CharField(max_length=100, blank=False, null=False)
 
     # TODO is student no. must be unique?
     student_no = models.CharField(max_length=10, blank=True, null=True)
-
-    computer = 'CE'
-    electric = 'EE'
-    other_MAJ = 'OTHER_MAJ'
-    MAJ_CHOICES = (
-        (computer, "CE"),
-        (electric, "EE"),
-        (other_MAJ, "OTHER_MAJ"),
-    )
-    uni_major = models.CharField(choices=MAJ_CHOICES, max_length=20, blank=True, null=True)
+    uni_major = models.CharField(max_length=50, blank=True, null=True)
+    uni_name = models.CharField(max_length=50, blank=False, null=False)
 
     prof = 'PROF'
     researcher = 'researcher'
@@ -29,21 +23,11 @@ class Account(AbstractBaseUser):
     )
     uni_position = models.CharField(choices=POSITION_CHOICES, max_length=20, blank=True, null=True)
 
-    sharif = 'SUT'
-    tehran = 'UOT'
-    other_uni = 'OTHER_UNI'
-    UNI_CHOICES = (
-        (sharif, "SUT"),
-        (tehran, "UOT"),
-        (other_uni, "OTHER_UNI"),
-    )
-    uni_name = models.CharField(choices=UNI_CHOICES, max_length=40, blank=True, null=True)
-
     is_visible = models.BooleanField(default=True)
     is_blocked = models.BooleanField(default=False)
     is_verified = models.BooleanField(default=False)
     is_graduated = models.BooleanField(default=False)
-    id_professor = models.BooleanField(default=False)
+    is_professor = models.BooleanField(default=False)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -54,4 +38,11 @@ class Account(AbstractBaseUser):
         if self.first_and_last_name:
             return str(self.first_and_last_name)
         else:
-            return '#' + str(self.id)
+            return str(self.id)
+
+
+class AccountForm(ModelForm):
+    class Meta:
+        model = Account
+        fields = ['email', 'first_and_last_name', 'student_no', 'uni_major', 'uni_name',
+                  'uni_position', 'is_visible', 'is_graduated', 'is_professor']

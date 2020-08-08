@@ -95,18 +95,69 @@
                     <div class="col-lg-5 col-md-8 px-lg-3 px-0">
                         <div class="banner-form-w3 ml-lg-5">
                             <div class="padding">
-                                <!-- banner form -->
-                                <form action="#" method="post" class="rtl">
-                                    <h5 class="mb-3">به کمپین مبارزه با سرقت ادبی بپیوندید</h5>
-                                    <div class="form-style-w3ls">
-                                        <input placeholder="نام" name="name" type="text" required>
-                                        <input placeholder="نام خانوادگی" name="family" type="text" required>
-                                        <input placeholder="شماره دانشجویی" name="number" type="text" required>
-                                        <button Class="btn">عضویت</button>
-                                        <span>با عضویت در این کمپین، در این کمپین عضو میشید :)</span>
+
+                                <ul class="nav nav-tabs rtl" id="myTab" role="tablist">
+									<li class="nav-item" role="presentation">
+										<a class="nav-link active" id="student-tab" data-toggle="tab" href="#student"
+											role="tab" aria-controls="student" aria-selected="true">دانشجویان</a>
+									</li>
+									<li class="nav-item" role="presentation">
+										<a class="nav-link" id="teacher-tab" data-toggle="tab" href="#teacher"
+											role="tab" aria-controls="teacher" aria-selected="false">اساتید</a>
+									</li>
+								</ul>
+
+                                <div class="tab-content" id="myTabContent">
+									<div class="tab-pane fade show active" id="student" role="tabpanel"
+										aria-labelledby="student-tab">
+
+                                        <!-- banner form -->
+                                        <form action="{% url 'web:submit' %}" method="post" class="rtl">
+                                            {% csrf_token %}
+                                            <h5 class="mb-3">به کمپین مبارزه با سرقت ادبی بپیوندید</h5>
+                                            <div class="form-style-w3ls">
+                                                <input placeholder="نام و نام خانوادگی" name="first_and_last_name" type="text" required>
+                                                <input placeholder="رشته" name="uni_major" type="text" required>
+                                                <input placeholder="دانشگاه" name="uni_name" type="text" required>
+                                                <input placeholder="شماره دانشجویی" name="student_no" type="text" required>
+                                                <input placeholder="ایمیل" name="email" type="text" required>
+                                                <input placeholder="رسانه‌ای شدن" name="is_visible" type="number" required>
+                                                <button type="submit" Class="btn">عضویت دانشجو</button>
+                                                {% if is_created %}
+                                                <span>
+                                                    شما با موفقیت به کمپین اضافه شدید.
+                                                </span>
+                                                {% endif %}
+
+                                                {% if is_verified %}
+                                                <span>
+                                                    با موفقیت تایید شد.
+                                                </span>
+                                                {% endif %}
+                                            </div>
+                                        </form>
+                                        <!-- //banner form -->
                                     </div>
-                                </form>
-                                <!-- //banner form -->
+
+                                    <div class="tab-pane fade" id="teacher" role="tabpanel"
+                                        aria-labelledby="teacher-tab">
+                                        <!-- banner form -->
+                                        <form action="{% url 'web:submit' %}" method="post" class="rtl">
+                                            {% csrf_token %}
+                                            <h5 class="mb-3">به کمپین مبارزه با سرقت ادبی بپیوندید</h5>
+                                            <div class="form-style-w3ls">
+                                                <input placeholder="نام و نام خانوادگی" name="first_and_last_name" type="text" required>
+                                                <input placeholder="دانشگاه" name="uni_name" type="text" required>
+                                                <input placeholder="سمت" name="uni_position" type="number" required>
+                                                <input placeholder="رسانه‌ای شدن" name="is_visible" type="number" required>
+                                                <input placeholder="آدرس ایمیل" name="email" type="email" required>
+                                                <button Class="btn">عضویت استاد</button>
+                                                <span>با عضویت در این کمپین، در این کمپین عضو میشید :)</span>
+                                            </div>
+                                        </form>
+                                        <!-- //banner form -->
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -176,6 +227,16 @@
         </a>
     </div>
     <!-- move top -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+		crossorigin="anonymous"></script>
 
 </body>
 </html>
