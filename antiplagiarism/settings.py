@@ -25,7 +25,7 @@ SECRET_KEY = '##v5e*y31(n)$jz4+#7&0uef$^j3q$7l_)2#*))yhsguk8p(dg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['.iran-antiplagiarism.com', '127.0.0.1']
+ALLOWED_HOSTS = ['.iran-antiplagiarism.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
