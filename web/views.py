@@ -1,13 +1,17 @@
 from django.shortcuts import render
 # from django.template import loader
 from django.urls import reverse
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from .models import Account, AccountForm
 
 
-def index(request, is_verified=0):
+def index(request, status=-1):
     context = dict()
-    if is_verified > 0:
+    if status == 0:
+        context['is_error'] = True
+    elif status == 1:
+        context['is_created'] = True
+    elif status == 2:
         context['is_verified'] = True
     joined_number = Account.objects.filter(is_verified=True).count()
     context['joined_number'] = joined_number
@@ -15,29 +19,39 @@ def index(request, is_verified=0):
 
 
 def submit(request):
-    context = dict()
     raw_data = request.POST
     f = AccountForm(request.POST)
 
-    is_created = False
-    joined_number = Account.objects.filter(is_verified=True).count()
-    context['joined_number'] = joined_number
     obj = None
     if f.is_valid():
         obj = Account(**f.cleaned_data)
-    # print(f.errors)
-    # TODO do some prof. stuff here
+    else:
+        # print(f.errors)
+        return HttpResponseRedirect(reverse('web:index', kwargs={'status': 0}))
     if obj:
         if 'uni_position' in raw_data:
             obj.is_professor = True
-            if raw_data['uni_position'] == 0:
-                print("injjjjjjjjjinjjjjjjjjjinjjjjjjjjjinjjjjjjjjj")
-                print(Account.POSITION_CHOICES)
-                obj.uni_position = Account.POSITION_CHOICES[0]
+        if 'is_visible' in raw_data:
+            if int(raw_data['is_visible']) > 0:
+                obj.is_visible = True
+            else:
+                obj.is_visible = False
+        if 'is_graduated' in raw_data:
+            if int(raw_data['is_graduated']) > 0:
+                obj.is_graduated = True
+            else:
+                obj.is_graduated = False
+        if 'student_no' in raw_data:
+            obj.is_professor = False
         obj.save()
-        is_created = True
-    context['is_created'] = is_created
-    return render(request, 'web/index.html', context)
+
+        # TODO email validation link to user
+        # validation_link = 'www.iran-antiplagiarism.com/validate/' + str(obj.id)
+        # print(validation_link)
+
+        return HttpResponseRedirect(reverse('web:index', kwargs={'status': 1}))
+    else:
+        return HttpResponseRedirect(reverse('web:index', kwargs={'status': 0}))
 
 
 def validate(request, user_id):
@@ -49,4 +63,4 @@ def validate(request, user_id):
         return HttpResponseRedirect(reverse('web:index'))
     user_account.is_verified = True
     user_account.save()
-    return HttpResponseRedirect(reverse('web:index', kwargs={'is_verified': 1}))
+    return HttpResponseRedirect(reverse('web:index', kwargs={'status': 2}))

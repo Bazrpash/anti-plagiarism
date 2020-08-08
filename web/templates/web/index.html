@@ -121,6 +121,7 @@
                                                 <input placeholder="دانشگاه" name="uni_name" type="text" required>
                                                 <input placeholder="شماره دانشجویی" name="student_no" type="text" required>
                                                 <input placeholder="ایمیل" name="email" type="text" required>
+                                                <input placeholder="فارغ التحصیل" name="is_graduated" type="number" required>
                                                 <input placeholder="رسانه‌ای شدن" name="is_visible" type="number" required>
                                                 <button type="submit" Class="btn">عضویت دانشجو</button>
                                                 {% if is_created %}
@@ -132,6 +133,12 @@
                                                 {% if is_verified %}
                                                 <span>
                                                     با موفقیت تایید شد.
+                                                </span>
+                                                {% endif %}
+
+                                                {% if is_error %}
+                                                <span>
+                                                    خطایی رخ داده است، لطفن اطلاعاتتان را بررسی کرده مجدد وارد نمایید.
                                                 </span>
                                                 {% endif %}
                                             </div>
@@ -148,9 +155,9 @@
                                             <div class="form-style-w3ls">
                                                 <input placeholder="نام و نام خانوادگی" name="first_and_last_name" type="text" required>
                                                 <input placeholder="دانشگاه" name="uni_name" type="text" required>
-                                                <input placeholder="سمت" name="uni_position" type="number" required>
-                                                <input placeholder="رسانه‌ای شدن" name="is_visible" type="number" required>
+                                                <input placeholder="سمت" name="uni_position" type="text" required>
                                                 <input placeholder="آدرس ایمیل" name="email" type="email" required>
+                                                <input placeholder="رسانه‌ای شدن" name="is_visible" type="number" required>
                                                 <button Class="btn">عضویت استاد</button>
                                                 <span>با عضویت در این کمپین، در این کمپین عضو میشید :)</span>
                                             </div>

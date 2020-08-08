@@ -8,7 +8,6 @@ class Account(models.Model):
     email = models.EmailField(unique=True, null=False, blank=False)
     first_and_last_name = models.CharField(max_length=100, blank=False, null=False)
 
-    # TODO is student no. must be unique?
     student_no = models.CharField(max_length=10, blank=True, null=True)
     uni_major = models.CharField(max_length=50, blank=True, null=True)
     uni_name = models.CharField(max_length=50, blank=False, null=False)
@@ -23,7 +22,7 @@ class Account(models.Model):
     )
     uni_position = models.CharField(choices=POSITION_CHOICES, max_length=20, blank=True, null=True)
 
-    is_visible = models.BooleanField(default=True)
+    is_visible = models.BooleanField(default=False)
     is_blocked = models.BooleanField(default=False)
     is_verified = models.BooleanField(default=False)
     is_graduated = models.BooleanField(default=False)
