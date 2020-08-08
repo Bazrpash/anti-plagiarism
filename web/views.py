@@ -14,8 +14,9 @@ def index(request, status=-1):
         context['is_created'] = True
     elif status == 2:
         context['is_verified'] = True
-    joined_number = Account.objects.filter(is_verified=True).count()
-    context['joined_number'] = joined_number
+    joineds = Account.objects.filter(is_verified=True)
+    context['student_joined_number'] = joineds.filter(is_professor=True).count()
+    context['teacher_joined_number'] = joineds.filter(is_professor=False).count()
     return render(request, 'web/index.html', context)
 
 
@@ -45,7 +46,7 @@ def submit(request):
             else:
                 obj.is_graduated = False
         obj.save()
-        sending_email(obj.email, obj.id)
+        send_verification_email(obj.email, obj.id)
 
         return HttpResponseRedirect(reverse('web:index', kwargs={'status': 1}))
     else:
@@ -64,7 +65,7 @@ def validate(request, user_id):
     return HttpResponseRedirect(reverse('web:index', kwargs={'status': 2}))
 
 
-def sending_email(recipient, validation_code):
+def send_verification_email(recipient, validation_code):
     validation_link = 'www.iran-antiplagiarism.com/validate/' + str(validation_code)
     html_message = loader.render_to_string('web/email.html', {
         'validation_link': validation_link
