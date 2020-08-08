@@ -5,7 +5,7 @@
 
 <head>
 
-    <title>کمپین مهرداد بذرپاش</title>
+    <title>کمپین مبارزه با سرقت علمی</title>
 
     <meta charset="UTF-8">
     <!-- for-mobile-apps -->
@@ -43,7 +43,7 @@
             <!-- nav -->
             <nav class="py-3 d-lg-flex">
                 <div id="logo">
-                    <h1> <a href="/"> مهرداد بذرپاش </a></h1>
+                    <h1> <a href="/">مهرداد بذرپاش</a></h1>
                 </div>
                 <label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
                 <input type="checkbox" id="drop" />
@@ -68,7 +68,7 @@
                                 <li>
                                     <div class="container-fluid">
                                         <div class="w3ls_banner_txt rtl">
-                                            <h3 class="b-w3ltxt text-capitalize mt-md-4">سرقت ادبی</h3>
+                                            <h3 class="b-w3ltxt text-capitalize mt-md-4">سرقت علمی</h3>
                                             <h4 class="b-w3ltxt text-capitalize mt-md-2">راهی برای تضمین جایگاه</h4>
                                             <p class="w3ls_pvt-title my-3">
                                                 جایگاه مشخصه، این فقط پایداری رو تضمین میکنه :)
@@ -84,9 +84,6 @@
                             </ul>
                             <div class="navigation">
                                 <div>
-                                    <label for="slides_1"></label>
-                                    <label for="slides_2"></label>
-                                    <label for="slides_3"></label>
                                 </div>
                             </div>
                         </div>
@@ -114,32 +111,47 @@
                                         <!-- banner form -->
                                         <form action="{% url 'web:submit' %}" method="post" class="rtl">
                                             {% csrf_token %}
-                                            <h5 class="mb-3">به کمپین مبارزه با سرقت ادبی بپیوندید</h5>
+                                            <h5 class="mb-3">کمپین مبارزه با سرقت علمی</h5>
                                             <div class="form-style-w3ls">
                                                 <input placeholder="نام و نام خانوادگی" name="first_and_last_name" type="text" required>
                                                 <input placeholder="رشته" name="uni_major" type="text" required>
                                                 <input placeholder="دانشگاه" name="uni_name" type="text" required>
                                                 <input placeholder="شماره دانشجویی" name="student_no" type="text" required>
+                                                <strong>
+                                                    ایمیل تنها برای تایید اولیه هویت خواهد بود:
+                                                </strong>
                                                 <input placeholder="ایمیل" name="email" type="text" required>
-                                                <input placeholder="فارغ التحصیل" name="is_graduated" type="number" required>
-                                                <input placeholder="رسانه‌ای شدن" name="is_visible" type="number" required>
+                                                <strong>
+                                                    آیا فارغ التحصیل می‌باشید؟
+                                                </strong>
+                                                <select name="is_graduated" required>
+									                <option value="0">خیر</option>
+									                <option value="1">بله</option>
+									            </select>
+                                                <strong>
+                                                    در صورت رسانه‌ای شدن این نامه، مایل هستم که نام بنده هم به عنوان امضا کننده‌ی آن اعلام شود؟
+                                                </strong>
+                                                <select name="is_visible" required>
+									                <option value="1">بله</option>
+									                <option value="0">خیر</option>
+									            </select>
                                                 <button type="submit" Class="btn">عضویت دانشجو</button>
                                                 {% if is_created %}
-                                                <span>
-                                                    شما با موفقیت به کمپین اضافه شدید.
-                                                </span>
+                                                <strong style="color:green">
+                                                    اطلاعات شما با موفقیت ثبت گردید، برای تایید عضویت لطفا ایمیل خود را بررسی نمایید.
+                                                </strong>
                                                 {% endif %}
 
                                                 {% if is_verified %}
-                                                <span>
-                                                    با موفقیت تایید شد.
-                                                </span>
+                                                <strong style="color:green">
+                                                    اطلاعات شما با موفقیت تایید شد.
+                                                </strong>
                                                 {% endif %}
 
                                                 {% if is_error %}
-                                                <span>
-                                                    خطایی رخ داده است، لطفن اطلاعاتتان را بررسی کرده مجدد وارد نمایید.
-                                                </span>
+                                                <strong style="color:red">
+                                                    خطایی رخ داده است، لطفا اطلاعاتتان را بررسی کرده مجدد وارد نمایید.
+                                                </strong>
                                                 {% endif %}
                                             </div>
                                         </form>
@@ -151,15 +163,27 @@
                                         <!-- banner form -->
                                         <form action="{% url 'web:submit' %}" method="post" class="rtl">
                                             {% csrf_token %}
-                                            <h5 class="mb-3">به کمپین مبارزه با سرقت ادبی بپیوندید</h5>
+                                            <h5 class="mb-3">کمپین مبارزه با سرقت علمی</h5>
                                             <div class="form-style-w3ls">
                                                 <input placeholder="نام و نام خانوادگی" name="first_and_last_name" type="text" required>
                                                 <input placeholder="دانشگاه" name="uni_name" type="text" required>
-                                                <input placeholder="سمت" name="uni_position" type="text" required>
-                                                <input placeholder="آدرس ایمیل" name="email" type="email" required>
-                                                <input placeholder="رسانه‌ای شدن" name="is_visible" type="number" required>
+                                                <select name="uni_position" required>
+									                <option value="PROF">عضو هیئت علمی</option>
+									                <option value="researcher">پژوهشگر</option>
+                                                    <option value="OTHER_POS">سایر</option>
+									            </select>
+                                                <strong>
+                                                    ایمیل تنها برای تایید اولیه هویت خواهد بود:
+                                                </strong>
+                                                <input placeholder="ایمیل" name="email" type="email" required>
+                                                <strong>
+                                                    در صورت رسانه‌ای شدن این نامه، مایل هستم که نام بنده هم به عنوان امضا کننده‌ی آن اعلام شود؟
+                                                </strong>
+                                                <select name="is_visible" required>
+									                <option value="1">بله</option>
+									                <option value="0">خیر</option>
+									            </select>
                                                 <button Class="btn">عضویت استاد</button>
-                                                <span>با عضویت در این کمپین، در این کمپین عضو میشید :)</span>
                                             </div>
                                         </form>
                                         <!-- //banner form -->
@@ -220,7 +244,7 @@
                     <li class=""><a href="#about">متن بیانیه</a></li>
                 </ul>
                 <div class="col-lg-6 copy-right p-0">
-                    <p class="">طراحی توسط مخالفین دزدی ادبی | تمامی حقوق برای هیچ احدی محفوظ نیست</p>
+                    <p class="">تیمی از مخالفان دزدی علمی</p>
                 </div>
             </div>
         </div>
