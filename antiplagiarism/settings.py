@@ -123,7 +123,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join('/home/amirhosseinz/', 'static/')
+STATIC_ROOT = os.path.join('/home/dh_mwbawy/', 'static/')
 
 # Email configurations
 EMAIL_HOST_PASSWORD = 'Iran_bazrpash1399'
