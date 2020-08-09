@@ -15,8 +15,8 @@ def index(request, status=-1):
     elif status == 2:
         context['is_verified'] = True
     joineds = Account.objects.filter(is_verified=True)
-    context['student_joined_number'] = joineds.filter(is_professor=True).count()
-    context['teacher_joined_number'] = joineds.filter(is_professor=False).count()
+    context['student_joined_number'] = joineds.filter(is_professor=False).count()
+    context['teacher_joined_number'] = joineds.filter(is_professor=True).count()
     return render(request, 'web/index.html', context)
 
 
