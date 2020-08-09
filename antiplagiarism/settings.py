@@ -134,9 +134,9 @@ EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 CELERY_EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
 
-# EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
-# CELERY_EMAIL_TASK_CONFIG = {
-#     'max_retries': 30,
-#     'queue': 'mail_queue',
-#     'ignore_result': True,
-# }
+EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
+CELERY_EMAIL_TASK_CONFIG = {
+    'max_retries': 30,
+    'queue': 'mail_queue',
+    'ignore_result': True,
+}
