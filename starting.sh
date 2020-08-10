@@ -1,6 +1,6 @@
-# this script should be run if server has NOT been restarted,
-# but we want to upload newer version of website
+# this script should be run if server has been restarted
 
+/home/dh_mwbawy/redis/redis-stable/src/redis-server --daemonize yes
 source env/bin/activate
 pkill gunicorn
 sleep 5

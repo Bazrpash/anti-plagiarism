@@ -66,7 +66,7 @@ def validate(request, user_id):
 
 
 def send_verification_email(recipient, validation_code):
-    validation_link = 'www.iran-antiplagiarism.com/validate/' + str(validation_code)
+    validation_link = 'https://www.iran-antiplagiarism.com/validate/' + str(validation_code)
     html_message = loader.render_to_string('web/email.html', {
         'validation_link': validation_link
     })
