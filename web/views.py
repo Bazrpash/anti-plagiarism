@@ -1,4 +1,5 @@
 import requests
+
 from django.shortcuts import render
 from django.template import loader
 from django.core.mail import send_mail
@@ -6,6 +7,8 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.conf import settings
 from .models import Account, AccountForm
+from .tasks import new_user_signed
+
 
 secret_key = settings.RECAPTCHA_SECRET_KEY
 
@@ -78,6 +81,9 @@ def validate(request, user_id):
         return HttpResponseRedirect(reverse('web:index'))
     user_account.is_verified = True
     user_account.save()
+
+    new_user_signed.delay(user_id)
+
     return HttpResponseRedirect(reverse('web:index', kwargs={'status': 2}))
 
 
