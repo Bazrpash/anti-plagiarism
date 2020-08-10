@@ -1,7 +1,6 @@
-
 import requests
 from antiplagiarism.celery import app
-from .models import U
+from .models import Account
 
 
 @app.task()
