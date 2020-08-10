@@ -135,3 +135,7 @@ CELERY_EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
 #     'queue': 'mail_queue',
 #     'ignore_result': True,
 # }
+
+# recaptcha configs
+RECAPTCHA_SITE_KEY = '6Lcpj7wZAAAAAH0hOJepVdUwZra-gN73OOfy5JO6'
+RECAPTCHA_SECRET_KEY = '6Lcpj7wZAAAAAIx2QYpFM0UT5ya_HftS_0dNTgSC'

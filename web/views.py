@@ -1,9 +1,13 @@
+import requests
 from django.shortcuts import render
 from django.template import loader
 from django.core.mail import send_mail
 from django.urls import reverse
 from django.http import HttpResponseRedirect
+from django.conf import settings
 from .models import Account, AccountForm
+
+secret_key = settings.RECAPTCHA_SECRET_KEY
 
 
 def index(request, status=-1):
@@ -24,33 +28,45 @@ def submit(request):
     raw_data = request.POST
     f = AccountForm(request.POST)
 
-    obj = None
+    if 'g-recaptcha-response' in raw_data:
+        # captcha verification
+        cap_data = {
+            'response': raw_data['g-recaptcha-response'],
+            'secret': secret_key
+        }
+        resp = requests.post('https://www.google.com/recaptcha/api/siteverify', data=cap_data)
+        result_json = resp.json()
+        if not result_json['success']:
+            return HttpResponseRedirect(reverse('web:index', kwargs={'status': 0}))
+    else:
+        # recapta data not provided
+        return HttpResponseRedirect(reverse('web:index', kwargs={'status': 0}))
+
     if f.is_valid():
         obj = Account(**f.cleaned_data)
     else:
         # print(f.errors)
         return HttpResponseRedirect(reverse('web:index', kwargs={'status': 0}))
-    if obj:
-        if 'uni_position' in raw_data:
-            obj.is_professor = True
+    if result_json['action'] == 'studentsubmit':
+        obj.is_professor = False
+    else:
+        obj.is_professor = True
+    if 'is_visible' in raw_data:
+        if int(raw_data['is_visible']) > 0:
+            obj.is_visible = True
         else:
-            obj.is_professor = False
-        if 'is_visible' in raw_data:
-            if int(raw_data['is_visible']) > 0:
-                obj.is_visible = True
-            else:
-                obj.is_visible = False
-        if 'is_graduated' in raw_data:
-            if int(raw_data['is_graduated']) > 0:
-                obj.is_graduated = True
-            else:
-                obj.is_graduated = False
-        obj.save()
+            obj.is_visible = False
+    if 'is_graduated' in raw_data:
+        if int(raw_data['is_graduated']) > 0:
+            obj.is_graduated = True
+        else:
+            obj.is_graduated = False
+    obj.save()
+
+    if not settings.DEBUG:
         send_verification_email(obj.email, obj.id)
 
-        return HttpResponseRedirect(reverse('web:index', kwargs={'status': 1}))
-    else:
-        return HttpResponseRedirect(reverse('web:index', kwargs={'status': 0}))
+    return HttpResponseRedirect(reverse('web:index', kwargs={'status': 1}))
 
 
 def validate(request, user_id):
