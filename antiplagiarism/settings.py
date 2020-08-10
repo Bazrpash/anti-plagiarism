@@ -25,7 +25,7 @@ SECRET_KEY = '##v5e*y31(n)$jz4+#7&0uef$^j3q$7l_)2#*))yhsguk8p(dg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['.iran-antiplagiarism.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['.iran-antiplagiarism.com', 'localhost']
 
 
 # Application definition
@@ -149,3 +149,7 @@ CELERY_EMAIL_TASK_CONFIG = {
     'queue': 'mail_queue',
     'ignore_result': True,
 }
+
+# recaptcha configs
+RECAPTCHA_SITE_KEY = '6Lcpj7wZAAAAAH0hOJepVdUwZra-gN73OOfy5JO6'
+RECAPTCHA_SECRET_KEY = '6Lcpj7wZAAAAAIx2QYpFM0UT5ya_HftS_0dNTgSC'
