@@ -134,7 +134,21 @@
                                         <!-- banner form -->
                                         <form action="{% url 'web:submit' %}" method="post" class="rtl" id="student-submit-form">
                                             {% csrf_token %}
+                                            {% if is_created %}
+                                            <strong style="color:green">
+                                                برای عضویت در کمپین حتما ایمیل خود را بررسی و آن را تایید کنید. با تشکر
+                                            </strong>
+                                            {% elif is_verified %}
+                                            <strong style="color:green">
+                                                اطلاعات شما با موفقیت تایید شد.
+                                            </strong>
+                                            {% elif is_error %}
+                                            <strong style="color:red">
+                                                خطایی رخ داده است، لطفا اطلاعاتتان را بررسی کرده مجدد وارد نمایید.
+                                            </strong>
+                                            {% else %}
                                             <h5 class="mb-3" style="font-size:24px">به کمپین #ابطال_مدرک_بذرپاش بپیوندید</h5>
+                                            {% endif %}
                                             <div class="form-style-w3ls">
                                                 <input placeholder="نام و نام خانوادگی" name="first_and_last_name" type="text" required>
                                                 <input placeholder="رشته" name="uni_major" type="text" required>
@@ -159,23 +173,6 @@
 									            </select>
                                                 <input type="hidden" name="g-recaptcha-response" id='student-recaptcha'>
                                                 <button type="submit" Class="btn">عضویت دانشجو</button>
-                                                {% if is_created %}
-                                                <strong style="color:green">
-                                                    برای عضویت در کمپین حتما ایمیل خود را بررسی و آن را تایید کنید. با تشکر
-                                                </strong>
-                                                {% endif %}
-
-                                                {% if is_verified %}
-                                                <strong style="color:green">
-                                                    اطلاعات شما با موفقیت تایید شد.
-                                                </strong>
-                                                {% endif %}
-
-                                                {% if is_error %}
-                                                <strong style="color:red">
-                                                    خطایی رخ داده است، لطفا اطلاعاتتان را بررسی کرده مجدد وارد نمایید.
-                                                </strong>
-                                                {% endif %}
                                             </div>
                                         </form>
                                         <!-- //banner form -->
