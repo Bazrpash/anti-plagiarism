@@ -5,7 +5,7 @@
 
 <head>
 
-    <title>کمپین مبارزه با سرقت علمی</title>
+    <title style="font-family: dana !important;">کمپین مبارزه با سرقت علمی</title>
     <meta name="description" content="کمپین ابطال مدرک بذرپاش
 نامه اساتید، دانشجویان و دانش آموختگان خطاب به وزیر علوم در اعتراض به سرقت علمی در پایان نامه مهرداد بذرپاش و درخواست ابطال مدرک">
 
@@ -38,6 +38,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'web/css/style.css' %}"><!-- custom css -->
 	<!-- <link href="css/css_slider.css" type="text/css" rel="stylesheet" media="all"> -->
     <link href="{% static 'web/css/font-awesome.min.css' %}" rel="stylesheet"><!-- fontawesome css -->
+    <link href="{% static 'web/css/fontstyle.css' %}" rel="stylesheet">
+    <link href="{% static 'web/css/fontiran.css' %}" rel="stylesheet">
 	<!-- //css files -->
 
 	<!-- google fonts -->
@@ -58,10 +60,10 @@
                 <label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
                 <input type="checkbox" id="drop" />
                 <ul class="menu ml-auto ml-1">
-                    <font face="adobe arabic"><a href="{% static 'web/documents/document.pdf' %}" target="_blank" style="font-size: 24px;">اسناد تقلب علمی</a></font>
+                    <font face="adobe arabic"><a href="{% static 'web/documents/document.pdf' %}" target="_blank" style="font-size: 24px; font-family: dana !important;">اسناد تقلب علمی</a></font>
                 </ul>
                 <ul class="menu ml-1" align="rtl">
-                    <font face="adobe arabic"><a href="#about" style="font-size: 24px;">متن نامه</a></font>
+                    <font face="adobe arabic"><a href="#about" style="font-size: 24px;font-family: dana !important;">متن نامه</a></font>
                 </ul>
 
             </nav>
@@ -92,11 +94,11 @@
                                             </h3>
 
                                             <div class="d-flex align-items-center" >
-                                                <p style="font-size:25px;">تاکنون</p>
+                                                <p style="font-size:20px;">تاکنون</p>
                                                 <a class="btn btn-banner text-white mx-1"><h6 style="font-size:20px">{{ student_joined_number }}</h6></a>
-                                                <p style="font-size:25px;"> دانشجو و </p>
+                                                <p style="font-size:20px;"> دانشجو و </p>
                                                 <a class="btn btn-banner text-white mx-1"><h6 style="font-size:20px">{{ teacher_joined_number }}</h6></a>
-                                                <p style="font-size:25px;"> استاد به این کمپین پیوسته اند</p>
+                                                <p style="font-size:20px;"> استاد به این کمپین پیوسته اند</p>
                                             </div>
 
                                             </font>
@@ -120,11 +122,11 @@
                                 <ul class="nav nav-tabs rtl" id="myTab" role="tablist" >
 									<li class="nav-item" role="presentation">
 										<a class="nav-link active" id="student-tab" data-toggle="tab" href="#student"
-											role="tab" aria-controls="student" aria-selected="true" style="font-size:30px">دانشجو</a>
+											role="tab" aria-controls="student" aria-selected="true" style="font-size:30px;font-family: dana !important;">دانشجو</a>
 									</li>
 									<li class="nav-item" role="presentation">
 										<a class="nav-link" id="teacher-tab" data-toggle="tab" href="#teacher"
-											role="tab" aria-controls="teacher" aria-selected="false" style="font-size:30px">هیات علمی</a>
+											role="tab" aria-controls="teacher" aria-selected="false" style="font-size:30px;font-family: dana !important;">هیات علمی</a>
 									</li>
 								</ul>
 
@@ -135,15 +137,15 @@
                                         <form action="{% url 'web:submit' %}" method="post" class="rtl" id="student-submit-form">
                                             {% csrf_token %}
                                             {% if is_created %}
-                                            <strong style="color:green">
+                                            <strong style="color:green;font-family: dana !important;">
                                                 برای عضویت در کمپین حتما ایمیل خود را بررسی و آن را تایید کنید. با تشکر
                                             </strong>
                                             {% elif is_verified %}
-                                            <strong style="color:green">
+                                            <strong style="color:green;font-family: dana !important;">
                                                 اطلاعات شما با موفقیت تایید شد.
                                             </strong>
                                             {% elif is_error %}
-                                            <strong style="color:red">
+                                            <strong style="color:red;font-family: dana !important;">
                                                 خطایی رخ داده است، لطفا اطلاعاتتان را بررسی کرده مجدد وارد نمایید.
                                             </strong>
                                             {% else %}
@@ -153,18 +155,18 @@
                                                 <input placeholder="نام و نام خانوادگی" name="first_and_last_name" type="text" required>
                                                 <input placeholder="رشته" name="uni_major" type="text" required>
                                                 <input placeholder="دانشگاه" name="uni_name" type="text" required>
-                                                <p style="font-size:17px">
+                                                <p style="font-size:17px;font-family: dana !important;">
                                                     از ایمیل برای اعتبارسنجی امضاکننده استفاده خواهد شد:
                                                 </p>
                                                 <input placeholder="ایمیل" name="email" type="text" required>
-                                                <strong>
+                                                <strong style="font-family: dana !important;">
                                                     آیا فارغ التحصیل شده اید؟
                                                 </strong>
                                                 <select name="is_graduated" required>
 									                <option value="0">خیر</option>
 									                <option value="1">بله</option>
 									            </select>
-                                                <strong>
+                                                <strong style="font-family: dana !important;">
                                                     در صورت رسانه‌ای شدن این نامه، مایل هستم که نام بنده هم به عنوان امضا کننده‌ی آن اعلام شود؟
                                                 </strong>
                                                 <select name="is_visible" required>
@@ -172,7 +174,7 @@
 									                <option value="0">خیر</option>
 									            </select>
                                                 <input type="hidden" name="g-recaptcha-response" id='student-recaptcha'>
-                                                <button type="submit" Class="btn">عضویت دانشجو</button>
+                                                <button type="submit" Class="btn" style="font-family: dana !important;">عضویت دانشجو</button>
                                             </div>
                                         </form>
                                         <!-- //banner form -->
@@ -182,28 +184,28 @@
                                         <!-- banner form -->
                                         <form action="{% url 'web:submit' %}" method="post" class="rtl" id="teacher-submit-form">
                                             {% csrf_token %}
-                                            <h5 class="mb-3">به کمپین #ابطال_مدرک_بذرپاش بپیوندید</h5>
+                                            <h5 class="mb-3" style="font-size:24px">به کمپین #ابطال_مدرک_بذرپاش بپیوندید</h5>
                                             <div class="form-style-w3ls">
                                                 <input placeholder="نام و نام خانوادگی" name="first_and_last_name" type="text" required>
                                                 <input placeholder="دانشگاه" name="uni_name" type="text" required>
                                                 <select name="uni_position" required>
-									                <option value="PROF">عضو هیئت علمی</option>
-									                <option value="researcher">پژوهشگر</option>
-                                                    <option value="OTHER_POS">سایر</option>
+									                <option value="PROF" style="font-family: dana !important;">عضو هیئت علمی</option>
+									                <option value="researcher" style="font-family: dana !important;">پژوهشگر</option>
+                                                    <option value="OTHER_POS" style="font-family: dana !important;">سایر</option>
 									            </select>
                                                 <p>
                                                     از ایمیل برای اعتبارسنجی امضاکننده استفاده خواهد شد:
                                                 </p>
                                                 <input placeholder="ایمیل" name="email" type="email" required>
-                                                <strong>
+                                                <strong style="font-family: dana !important;">
                                                     در صورت رسانه‌ای شدن این نامه، مایل هستم که نام بنده هم به عنوان امضا کننده‌ی آن اعلام شود؟
                                                 </strong>
                                                 <select name="is_visible" required>
-									                <option value="1">بله</option>
-									                <option value="0">خیر</option>
+									                <option value="1" style="font-family: dana !important;">بله</option>
+									                <option value="0" style="font-family: dana !important;">خیر</option>
 									            </select>
                                                 <input type="hidden" name="g-recaptcha-response" id='teacher-recaptcha'>
-                                                <button type="submit" Class="btn">عضویت استاد</button>
+                                                <button type="submit" Class="btn" style="font-family: dana !important;">عضویت استاد</button>
                                             </div>
                                         </form>
                                         <!-- //banner form -->
@@ -229,11 +231,11 @@
 
                 <li class="nav-item" role="presentation">
                     <a class="nav-link active" id="student-stat-tab" data-toggle="tab" href="#student-stat"
-                        role="tab" aria-controls="student" aria-selected="true">متن نامه دانشجویان</a>
+                        role="tab" aria-controls="student" aria-selected="true" style="font-family: dana !important;">متن نامه دانشجویان</a>
                 </li>
                 <li class="nav-item" role="presentation">
                     <a class="nav-link" id="teacher-stat-tab" data-toggle="tab" href="#teacher-stat"
-                        role="tab" aria-controls="teacher" aria-selected="false">متن نامه های اعضای هیات علمی و پژوهشگران</a>
+                        role="tab" aria-controls="teacher" aria-selected="false" style="font-family: dana !important;">متن نامه های اعضای هیات علمی و پژوهشگران</a>
                 </li>
 
             </ul>
