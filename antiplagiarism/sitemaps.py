@@ -5,6 +5,7 @@ from django.urls import reverse
 class StaticViewSitemap(sitemaps.Sitemap):
     priority = 1.0
     changefreq = 'daily'
+    protocol = 'https'
 
     def items(self):
         return ['web:index']
