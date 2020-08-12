@@ -801,7 +801,7 @@ subscribe form {
 }
 
 footer {
-    background: url(../images/footer.jpg)no-repeat left;
+    /*background: url(../images/footer.jpg)no-repeat left;*/
     -webkit-background-size: contain;
     -moz-background-size: contain;
     -o-background-size: contain;
