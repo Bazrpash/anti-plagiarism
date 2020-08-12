@@ -38,7 +38,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'web/css/style.css' %}"><!-- custom css -->
 	<!-- <link href="css/css_slider.css" type="text/css" rel="stylesheet" media="all"> -->
     <link href="{% static 'web/css/font-awesome.min.css' %}" rel="stylesheet"><!-- fontawesome css -->
-    <link href="{% static 'web/css/fontstyle.css' %}" rel="stylesheet">
     <link href="{% static 'web/css/fontiran.css' %}" rel="stylesheet">
 	<!-- //css files -->
 
@@ -60,10 +59,10 @@
                 <label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
                 <input type="checkbox" id="drop" />
                 <ul class="menu ml-auto ml-1">
-                    <font face="adobe arabic"><a href="{% static 'web/documents/document.pdf' %}" target="_blank" style="font-size: 24px; font-family: dana !important;">اسناد تقلب علمی</a></font>
+                    <a href="{% static 'web/documents/document.pdf' %}" target="_blank" style="font-size: 24px; font-family: dana !important;">اسناد تقلب علمی</a>
                 </ul>
                 <ul class="menu ml-1" align="rtl">
-                    <font face="adobe arabic"><a href="#about" style="font-size: 24px;font-family: dana !important;">متن نامه</a></font>
+                    <a href="#about" style="font-size: 24px;font-family: dana !important;">متن نامه</a>
                 </ul>
 
             </nav>
@@ -87,21 +86,18 @@
                                         <div class="w3ls_banner_txt rtl">
 
                                             <h3 class="b-w3ltxt text-capitalize mt-md-4">#ابطال_مدرک_بذرپاش</h3>
-                                            <font face = "adobe arabic">
-                                            <h3 class="b-w3ltxt text-capitalize mt-md-2">کمپین دانشگاهیان برای مقابله با سرقت علمی</h3>
-                                            <h3 class="b-w3ltxt my-3" style="font-size: 30px;">
+                                            <h4 class="b-w3ltxt text-capitalize mt-md-2">کمپین دانشگاهیان برای مقابله با سرقت علمی</h4>
+                                            <h5 class="b-w3ltxt text-white my-3">
                                                 مدرک آقای بذرپاش را ابطال کنید
-                                            </h3>
+                                            </h5>
 
                                             <div class="d-flex align-items-center" >
-                                                <p style="font-size:20px;">تاکنون</p>
-                                                <a class="btn btn-banner text-white mx-1"><h6 style="font-size:20px">{{ student_joined_number }}</h6></a>
-                                                <p style="font-size:20px;"> دانشجو و </p>
-                                                <a class="btn btn-banner text-white mx-1"><h6 style="font-size:20px">{{ teacher_joined_number }}</h6></a>
-                                                <p style="font-size:20px;"> استاد به این کمپین پیوسته اند</p>
+                                                <h6 class="text-white">تاکنون</h6>
+                                                <a class="btn btn-banner text-white mx-1"><h6>{{ student_joined_number }}</h6></a>
+                                                <h6 class="text-white"> دانشجو و </h6>
+                                                <a class="btn btn-banner text-white mx-1"><h6>{{ teacher_joined_number }}</h6></a>
+                                                <h6 class="text-white"> استاد به این کمپین پیوسته اند</h6>
                                             </div>
-
-                                            </font>
                                         </div>
                                     </div>
                                 </li>
@@ -114,7 +110,6 @@
                         <!-- //banner slider-->
                     </div>
                     <div class="col-lg-5 col-md-8 px-lg-3 px-0">
-                    <font face="adobe arabic">
                         <div class="banner-form-w3
                          ml-lg-5">
                             <div class="padding">
@@ -149,26 +144,26 @@
                                                 خطایی رخ داده است، لطفا اطلاعاتتان را بررسی کرده مجدد وارد نمایید.
                                             </strong>
                                             {% else %}
-                                            <h5 class="mb-3" style="font-size:24px">به کمپین #ابطال_مدرک_بذرپاش بپیوندید</h5>
+                                            <h6 class="mb-3">به کمپین #ابطال_مدرک_بذرپاش بپیوندید</h6>
                                             {% endif %}
                                             <div class="form-style-w3ls">
                                                 <input placeholder="نام و نام خانوادگی" name="first_and_last_name" type="text" required>
                                                 <input placeholder="رشته" name="uni_major" type="text" required>
                                                 <input placeholder="دانشگاه" name="uni_name" type="text" required>
-                                                <p style="font-size:17px;font-family: dana !important;">
+                                                <p>
                                                     از ایمیل برای اعتبارسنجی امضاکننده استفاده خواهد شد:
                                                 </p>
                                                 <input placeholder="ایمیل" name="email" type="text" required>
-                                                <strong style="font-family: dana !important;">
+                                                <p>
                                                     آیا فارغ التحصیل شده اید؟
-                                                </strong>
+                                                </p>
                                                 <select name="is_graduated" required>
 									                <option value="0">خیر</option>
 									                <option value="1">بله</option>
 									            </select>
-                                                <strong style="font-family: dana !important;">
+                                                <p>
                                                     در صورت رسانه‌ای شدن این نامه، مایل هستم که نام بنده هم به عنوان امضا کننده‌ی آن اعلام شود؟
-                                                </strong>
+                                                </p>
                                                 <select name="is_visible" required>
 									                <option value="1">بله</option>
 									                <option value="0">خیر</option>
@@ -184,7 +179,7 @@
                                         <!-- banner form -->
                                         <form action="{% url 'web:submit' %}" method="post" class="rtl" id="teacher-submit-form">
                                             {% csrf_token %}
-                                            <h5 class="mb-3" style="font-size:24px">به کمپین #ابطال_مدرک_بذرپاش بپیوندید</h5>
+                                            <h6 class="mb-3">به کمپین #ابطال_مدرک_بذرپاش بپیوندید</h6>
                                             <div class="form-style-w3ls">
                                                 <input placeholder="نام و نام خانوادگی" name="first_and_last_name" type="text" required>
                                                 <input placeholder="دانشگاه" name="uni_name" type="text" required>
@@ -197,9 +192,9 @@
                                                     از ایمیل برای اعتبارسنجی امضاکننده استفاده خواهد شد:
                                                 </p>
                                                 <input placeholder="ایمیل" name="email" type="email" required>
-                                                <strong style="font-family: dana !important;">
+                                                <p style="font-family: dana !important;">
                                                     در صورت رسانه‌ای شدن این نامه، مایل هستم که نام بنده هم به عنوان امضا کننده‌ی آن اعلام شود؟
-                                                </strong>
+                                                </p>
                                                 <select name="is_visible" required>
 									                <option value="1" style="font-family: dana !important;">بله</option>
 									                <option value="0" style="font-family: dana !important;">خیر</option>
@@ -214,7 +209,6 @@
                                 </div>
                             </div>
                         </div>
-                    </font>
                     </div>
                 </div>
             </div>
@@ -226,8 +220,8 @@
     <section class="banner-bottom py-5 rtl" id="about">
         <div class="container py-lg-5">
 
-            <font face="adobe arabic">
-                <ul class="nav nav-tabs rtl" id="myStatTab" role="tablist" style="font-size:25px">
+
+            <ul class="nav nav-tabs rtl" id="myStatTab" role="tablist" style="font-size:25px">
 
                 <li class="nav-item" role="presentation">
                     <a class="nav-link active" id="student-stat-tab" data-toggle="tab" href="#student-stat"
@@ -239,12 +233,11 @@
                 </li>
 
             </ul>
-            </font>
-            <font face='tahoma'>
+
             <div class="tab-content" id="myStatTabContent">
                 <div class="tab-pane fade show active" id="student-stat" role="tabpanel"
                      aria-labelledby="student-stat-tab"><br>
-                    <font face="adobe arabic"><h2 class="heading mb-sm-5 mb-4" style="font-size:40px;"> متن نامه دانشجویان خطاب به وزیر علوم</h2></font>
+                    <h2 class="heading mb-sm-5 mb-4" style="font-size:40px;"> متن نامه دانشجویان خطاب به وزیر علوم</h2>
                     <div class="row bottom-grids " style="
                                                       border: 1px solid #333;
                                                       box-shadow: 8px 8px 5px #444;
@@ -267,7 +260,7 @@
                 </div>
                 <div class="tab-pane fade" id="teacher-stat" role="tabpanel"
                      aria-labelledby="teacher-stat-tab"><br>
-                    <font face="adobe arabic"><h2 class="heading mb-sm-5 mb-4" style="font-size:40px;">نامه اعضای هیات علمی و پژوهشگران به وزیر علوم</h2></font>
+                    <h2 class="heading mb-sm-5 mb-4" style="font-size:40px;">نامه اعضای هیات علمی و پژوهشگران به وزیر علوم</h2>
                     <div class="row bottom-grids" style="
                                                       border: 1px solid #333;
                                                       box-shadow: 8px 8px 5px #444;
@@ -305,7 +298,7 @@
                     </div>
                 </div>
                     <br><br>
-                    <font face="adobe arabic"><h2 class="heading mb-sm-5 mb-4" style="font-size:40px;">نامه اعضای هیات علمی و پژوهشگران به نمایندگان مجلس شورای اسلامی</h2></font>
+                    <h2 class="heading mb-sm-5 mb-4" style="font-size:40px;">نامه اعضای هیات علمی و پژوهشگران به نمایندگان مجلس شورای اسلامی</h2>
                     <div class="row bottom-grids" style="
                                                       border: 1px solid #333;
                                                       box-shadow: 8px 8px 5px #444;
@@ -341,7 +334,6 @@
                     </div>
                 </div>
             </div>
-            </font>
         </div>
     </section>
     <!-- //what we Serve -->
@@ -352,7 +344,7 @@
             <div class="container py-md-1">
                 <div class="footer-grid_section text-center">
                     <div class="footer-title mb-3">
-                        <a href="#">تماس با ما</a>
+                        <a href="#" style="font-family: dana !important;">تماس با ما</a>
                     </div>
                     <div class="footer-text">
                         <p>در صورت مواجهه با مشکل در عضویت کمپین، با ایمیل یا حساب تلگرامی زیر در ارتباط باشید</p>

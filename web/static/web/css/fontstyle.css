@@ -1,4 +1,4 @@
-﻿@import url(fontiran.css); /* لینک فایلی که وظیفه بارگذاری فونت ها را برعهده دارد */
+﻿@import url(fontiran.css);
 body {
 	font-family: dana  !important;
 	direction: rtl;
@@ -6,12 +6,15 @@ body {
 	background-color: #FFF;
 	margin: 0;
 }
+
 h1, h2, h3, h4, h5, h6,input, textarea {
 	font-family: dana !important;
 }
+
 h1 {
 	font-weight: bold;
 }
+
 .wrapper {
 	max-width: 900px;
 	margin: 0 auto;
@@ -202,9 +205,7 @@ blockquote {
 	color: #4B4B4B;
 }
 
-
 .lefttbox {
-	
 	padding-right: 20px;
 	padding-left: 4px;
 	float: right;
@@ -231,6 +232,7 @@ blockquote {
 	color: #333333;
 	margin-top: 100px;
 }
+
 .footer {
 	font-weight: 400;
 	font-size: 0.7em;
@@ -238,13 +240,4 @@ blockquote {
 	direction: ltr;
 	margin-bottom: 0px;
 	padding-bottom: 0px;
-}
-
-p {
-    margin: 0;
-	font-size: 15px;
-	font-family: dana !important;
-    line-height: 2em;
-    letter-spacing: 1px;
-    color: #666;
 }
