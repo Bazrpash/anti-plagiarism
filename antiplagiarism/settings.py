@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'web.apps.WebConfig',
     'djcelery_email',
+    'import_export',
 ]
 
 MIDDLEWARE = [

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
     'web.apps.WebConfig',
+    'import_export',
 ]
 
 MIDDLEWARE = [

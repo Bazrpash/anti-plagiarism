@@ -1,14 +1,16 @@
 from django.contrib.auth.models import Group, User
 from django.contrib import admin
+from import_export.admin import ExportMixin
 from .models import Account
 
 
-class AccountAdmin(admin.ModelAdmin):
-    fields = ['id', 'email', 'first_and_last_name', 'uni_major', 'uni_name',
-              'uni_position', 'is_visible', 'is_verified', 'is_graduated', 'is_professor',
+@admin.register(Account)
+class AccountAdmin(ExportMixin, admin.ModelAdmin):
+    fields = ['id', 'is_visible', 'email', 'first_and_last_name', 'uni_major', 'uni_name',
+              'uni_position', 'is_verified', 'is_graduated', 'is_professor',
               'created_at', 'updated_at', 'notes']
-    readonly_fields = ('id', 'email', 'first_and_last_name', 'uni_major', 'uni_name',
-                       'uni_position', 'is_visible', 'is_verified', 'is_graduated', 'is_professor',
+    readonly_fields = ('id', 'first_and_last_name', 'uni_major', 'uni_name',
+                       'uni_position', 'is_verified', 'is_graduated', 'is_professor',
                        'created_at', 'updated_at')
     list_display = ('email', 'first_and_last_name', 'is_verified', 'is_professor', 'is_visible',
                     'created_at', 'updated_at')
@@ -20,7 +22,10 @@ class AccountAdmin(admin.ModelAdmin):
     )
     search_fields = ('id', 'first_and_last_name', 'email', 'uni_major', 'uni_name', 'uni_position', 'notes')
 
+    def has_add_permission(self, request, obj=None):
+        return False
 
-admin.site.register(Account, AccountAdmin)
+
+# admin.site.register(Account, AccountAdmin)
 admin.site.unregister(Group)
 admin.site.unregister(User)
