@@ -10,7 +10,7 @@ class AccountAdmin(ExportMixin, admin.ModelAdmin):
               'uni_position', 'is_verified', 'is_graduated', 'is_professor',
               'created_at', 'updated_at', 'notes']
     readonly_fields = ('id', 'first_and_last_name', 'uni_major', 'uni_name',
-                       'uni_position', 'is_verified', 'is_graduated', 'is_professor',
+                       'uni_position', 'is_graduated', 'is_professor',
                        'created_at', 'updated_at')
     list_display = ('email', 'first_and_last_name', 'is_verified', 'is_professor', 'is_visible',
                     'created_at', 'updated_at')
