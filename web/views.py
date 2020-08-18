@@ -101,3 +101,15 @@ def send_verification_email(recipient, validation_code):
         from_email='contact@iran-antiplagiarism.com',
         fail_silently=True
     )
+
+
+def name_list(request):
+    f = open('web/static/web/documents/scholars_list.txt', 'r')
+    scholars_list = f.readlines()
+    f.close()
+    f = open('web/static/web/documents/students_list.txt', 'r')
+    students_list = f.readlines()
+    f.close()
+    context = {'scholars_list': scholars_list, 'students_list': students_list}
+    return render(request, 'web/name_list.html', context)
+
